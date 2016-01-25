@@ -4,6 +4,7 @@ describe OysterCard do
 
 subject(:OysterCard) {described_class.new}
 
+let (:entrystation) {double :entrystation}
 
   describe 'Balance' do
     it 'balance starts at 0' do
@@ -12,7 +13,7 @@ subject(:OysterCard) {described_class.new}
     end
 
     it 'above minimum amount' do
-      expect {subject.touch_in}.to raise_error("not enough money")
+      expect {subject.touch_in(entrystation)}.to raise_error("not enough money")
     end
 
     context 'Adding to the balance' do
@@ -36,7 +37,7 @@ subject(:OysterCard) {described_class.new}
     describe 'touch in' do
       it 'touch in sets journey to true' do
         allow(subject).to receive(:balance).and_return(10)
-        subject.touch_in
+        subject.touch_in(entrystation)
         expect(subject.journey).to eq true
       end
     end
@@ -45,6 +46,14 @@ subject(:OysterCard) {described_class.new}
       it "touch out sets journey to false" do
         subject.touch_out
         expect(subject.journey).to eq false
+      end
+    end
+
+    describe 'remember stations' do
+      it 'saves station names' do
+        subject.topup(15)
+        subject.touch_in(entrystation)
+        expect(subject.touch_in(entrystation)).to eq entrystation
       end
     end
   end

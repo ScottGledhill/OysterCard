@@ -2,7 +2,7 @@ MAXIMUM_LIMIT = 90
 MINIMUM_LIMIT = 1
 
 class OysterCard
-attr_reader :balance, :journey
+attr_reader :balance, :journey, :entrystation
   def initialize
     @journey = false
     @balance = 0
@@ -16,9 +16,10 @@ attr_reader :balance, :journey
     end
   end
 
-  def touch_in
+  def touch_in(entrystation)
     fail "not enough money" if balance < MINIMUM_LIMIT
     @journey = true unless in_journey?
+    entrystation
   end
 
 
