@@ -8,6 +8,10 @@ attr_reader :balance
   end
 
   def topup(value)
-    (@balance + value) > MAXIMUM_LIMIT ? 'exceeded' : @balance += value
+    if (@balance + value) > MAXIMUM_LIMIT
+      raise 'balance exceeded'
+    else
+      @balance += value
+    end
   end
 end

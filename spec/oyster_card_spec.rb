@@ -15,7 +15,7 @@ subject(:OysterCard) {described_class.new}
         expect {subject.topup(10)}.to change {subject.balance}.by(10)
       end
       it 'doesn\'t allow you to exceed limit of £90' do
-        expect(subject.topup(100)).to eq 'exceeded'
+        expect {subject.topup(100)}.to raise_error 'balance exceeded'
       end
     end
   end
