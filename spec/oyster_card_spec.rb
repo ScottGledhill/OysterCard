@@ -11,6 +11,10 @@ subject(:OysterCard) {described_class.new}
       expect(subject.balance).to eq 0
     end
 
+    it 'above minimum amount' do
+      expect {subject.touch_in}.to raise_error("not enough money")
+    end
+
     context 'Adding to the balance' do
       it 'top up balance' do
         expect {subject.topup(10)}.to change {subject.balance}.by(10)
@@ -29,6 +33,7 @@ subject(:OysterCard) {described_class.new}
 
     describe 'touch in' do
       it 'touch in sets journey to true' do
+        allow(subject).to receive(:balance).and_return(10)
         subject.touch_in
         expect(subject.journey).to eq true
       end
