@@ -16,10 +16,6 @@ attr_reader :balance, :journey
     end
   end
 
-  def deduct(value)
-    @balance -= value
-  end
-
   def touch_in
     fail "not enough money" if balance < MINIMUM_LIMIT
     @journey = true unless in_journey?
@@ -28,6 +24,7 @@ attr_reader :balance, :journey
 
   def touch_out
     @journey = false if in_journey?
+    @balance -= MINIMUM_LIMIT
   end
 
   private
@@ -35,4 +32,8 @@ attr_reader :balance, :journey
   def in_journey?
     @journey
   end
+end
+
+def deduct(value)
+  @balance -= value
 end
