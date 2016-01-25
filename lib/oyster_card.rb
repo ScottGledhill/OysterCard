@@ -6,6 +6,7 @@ attr_reader :balance, :journey, :entrystation
   def initialize
     @journey = false
     @balance = 0
+    @entrystation
   end
 
   def topup(value)
@@ -19,22 +20,23 @@ attr_reader :balance, :journey, :entrystation
   def touch_in(entrystation)
     fail "not enough money" if balance < MINIMUM_LIMIT
     @journey = true unless in_journey?
-    entrystation
+    @entrystation = entrystation
   end
 
 
   def touch_out
-    @journey = false if in_journey?
-    @balance -= MINIMUM_LIMIT
+    deduct(MINIMUM_LIMIT)
+    @entry_station = nil
   end
 
   private
 
   def in_journey?
-    @journey
+    entrystation
+    @journey = true
   end
-end
 
-def deduct(value)
-  @balance -= value
+  def deduct(value)
+    @balance -= value
+  end
 end
