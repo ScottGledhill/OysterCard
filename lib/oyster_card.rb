@@ -2,8 +2,9 @@
 MAXIMUM_LIMIT = 90
 
 class OysterCard
-attr_reader :balance
+attr_reader :balance, :journey
   def initialize
+    @journey = false
     @balance = 0
   end
 
@@ -19,4 +20,18 @@ attr_reader :balance
     @balance -= value
   end
 
+  def touch_in
+    @journey = true unless in_journey?
+  end
+
+
+  def touch_out
+    @journey = false unless not in_journey?
+  end
+
+  private
+
+  def in_journey?
+    @journey
+  end
 end

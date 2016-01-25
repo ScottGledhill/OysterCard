@@ -23,8 +23,24 @@ subject(:OysterCard) {described_class.new}
     context 'Deducting from the balance' do
       it "deducts balance" do
         subject.deduct(10)
-        expect(subject.balance).to eq -10
+        expect(subject.balance).to eq (- 10)
       end
     end
+
+    describe 'touch in' do
+      it 'touch in sets journey to true' do
+        subject.touch_in
+        expect(subject.journey).to eq true
+      end
+    end
+
+    describe 'touch out' do
+      it "touch out sets journey to false" do
+        subject.touch_out
+        expect(subject.journey).to eq false
+      end
+    end
+
+
   end
 end
