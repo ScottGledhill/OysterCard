@@ -17,4 +17,5 @@ class Journey
   def ends(station)
    	@entry_exit_stations[:exit_station] = station #if in_progress?
   end
+  
 end
