@@ -26,16 +26,16 @@ describe Oystercard do
       expect{card.touch_in(station)}.to raise_error 'Insufficient funds'
     end
 
-    it "changes entry_station to the entry station" do
-      card.top_up(Oystercard::TOP_UP_LIMIT)
-      expect{card.touch_in(station)}.to change{card.entry_station}.to (station)
-    end
+    #it "changes entry_station to the entry station" do
+      #card.top_up(Oystercard::TOP_UP_LIMIT)
+      #expect{card.touch_in(station)}.to change{card.entry_station}.to (station)
+    #end
 
-    it "resets exit_station to nil" do
-    	card.top_up(Oystercard::TOP_UP_LIMIT)
-    	card.touch_in(station)
-      expect(card.exit_station).to eq(nil)
-    end
+    #it "resets exit_station to nil" do
+    	#card.top_up(Oystercard::TOP_UP_LIMIT)
+    	#card.touch_in(station)
+      #expect(card.exit_station).to eq(nil)
+    #end
 	end
 
   describe "touch_out" do
@@ -49,13 +49,13 @@ describe Oystercard do
       expect{card.touch_out(station)}.to change{card.balance}.by(-Oystercard::MIN_FARE)
     end
 
-    it "resets entry_station to nil" do
-      expect{card.touch_out(station)}.to change{card.entry_station}.to (nil)
-    end
+    #it "resets entry_station to nil" do
+      #expect{card.touch_out(station)}.to change{card.entry_station}.to (nil)
+    #end
 
-    it "sets exit_station" do
-      expect{card.touch_out(station)}.to change{card.exit_station}.to (station)
-    end
+    # it "sets exit_station" do
+    #   expect{card.touch_out(station)}.to change{card.exit_station}.to (station)
+    # end
 	end
 
   describe "history" do
