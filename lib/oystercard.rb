@@ -34,7 +34,7 @@ class Oystercard
   end
 
 	def history
-		@log.log
+		@log.history
 	end
 
   private

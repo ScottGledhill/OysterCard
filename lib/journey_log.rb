@@ -6,6 +6,10 @@ class JourneyLog
     @log = []
   end
 
+  def history
+     history = @log.dup
+  end
+
   def start_journey (station)
     @this_journey = Journey.new
     @this_journey.starts(station)
@@ -15,4 +19,6 @@ class JourneyLog
     @this_journey.ends(station)
     @log << @this_journey
   end
+
+  
 end

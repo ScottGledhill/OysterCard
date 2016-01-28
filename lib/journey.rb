@@ -12,14 +12,21 @@ class Journey
 
 	def starts(station)
    	@entry_exit_stations[:entry_station] = station #if in_progress?
+   	station[:zone] = @a
 	end
 
   def ends(station)
    	@entry_exit_stations[:exit_station] = station #if in_progress?
+   	station[:zone] = @b
   end
+
+  def zone_diff
+  	(@a-@b).abs
+  end
+
+
+
+
 end
 
 
-def male_history (journeylog)
-	journeylog.log<<@entry_exit_stations
-end
