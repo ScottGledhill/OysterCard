@@ -1,3 +1,5 @@
+
+
 class Oystercard
 	attr_reader :balance, :entry_station, :exit_station, :journeys
 
@@ -16,11 +18,10 @@ class Oystercard
     @balance += amount
   end
 
-  def in_journey?
-  	@entry_station
-  end
+
 
   def touch_in(station)
+
   	fail 'Insufficient funds' if @balance < MIN_FARE
   	@entry_station = station
   	@exit_station = nil #< -- not necessary because we're already overwriting them

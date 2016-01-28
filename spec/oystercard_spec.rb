@@ -19,28 +19,6 @@ describe Oystercard do
     end
   end
 
-  context "in_journey?" do
-
-  	before do
-  		card.top_up(Oystercard::TOP_UP_LIMIT)
-  	end
-
-  	 it 'start of journey in_journey? is false' do
-  		expect(card).not_to be_in_journey
-  	end
-
-  	it 'touch in changes in_journey? to true' do
-  		card.touch_in(station)
-  		expect(card).to be_in_journey
-  	end
-
-  	it 'touch out changes in_journey? to false' do
-  		card.touch_in(station)
-  		card.touch_out(station)
-  		expect(card).not_to be_in_journey
-  	end
-  end
-
   describe "touch_in" do
 
     it "raises error if under minimum amount" do
