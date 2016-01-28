@@ -2,7 +2,7 @@ require 'station'
 
 describe Station do
 	subject(:station){described_class.new(:Wimbledon, 4)}
-	
+
 
   it 'can receive and output name' do
    expect(station.name).to eq :Wimbledon
@@ -12,7 +12,7 @@ describe Station do
    expect(station.zone).to eq 4
   end
 
-
+	
 
 
 

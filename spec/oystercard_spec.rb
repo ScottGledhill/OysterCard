@@ -61,14 +61,14 @@ describe Oystercard do
   describe "history" do
 
 	    it "has empty history" do
-	    	expect(card.journeys).to be_empty
+	    	expect(card.history).to be_empty
 	    end
 
-	    it "contains entry and exit station" do
-	    	card.top_up(Oystercard::TOP_UP_LIMIT)
-	      card.touch_in(station)
-	      card.touch_out(station)
-	    	expect(card.journeys).to include journey
-	    end
+	    # it "contains entry and exit station" do
+	    # 	card.top_up(Oystercard::TOP_UP_LIMIT)
+	    #   card.touch_in(station)
+	    #   card.touch_out(station)
+	    # 	expect(card.history).to include journey
+	    # end
   end
 end
