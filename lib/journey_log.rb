@@ -7,7 +7,7 @@ class JourneyLog
   end
 
   def history
-     history = @log.dup
+    @log.dup
   end
 
   def start_journey (station)
@@ -19,6 +19,4 @@ class JourneyLog
     @this_journey.ends(station)
     @log << @this_journey
   end
-
-  
 end

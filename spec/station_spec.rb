@@ -11,14 +11,4 @@ describe Station do
   it 'can receive and output zone' do
    expect(station.zone).to eq 4
   end
-
-	
-
-
-
-
-
-
-
-
 end
